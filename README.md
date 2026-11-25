@@ -6,9 +6,9 @@
 A console application for a small bookstore: keep a catalogue of books, search and sort it
 with hand-written algorithms, and record the day's sales.
 
-Written in Java with no external libraries, as a university course project at the
-International Hellenic University (Department of Information and Electronic Engineering).
-The user interface is in Greek.
+Written in Java with no external libraries, as an optional assignment for the
+**Object-Oriented Programming** course (2nd semester) at the International Hellenic University,
+Department of Information and Electronic Engineering. The user interface is in Greek.
 
 ## Features
 
