@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Compile
+        run: javac -encoding UTF-8 -Xlint:unchecked -d out $(find src -name '*.java')
+
+      - name: Package jar
+        run: jar cfm book-catalogue-manager.jar src/META-INF/MANIFEST.MF -C out .
+
+      - name: Run demo session
+        run: |
+          java -Dstdout.encoding=UTF-8 -jar book-catalogue-manager.jar --demo < demo/demo-session.txt > demo-output.txt
+          cat demo-output.txt
+          grep -q "Συνολική αξία πωλήσεων ημέρας: 116.50€" demo-output.txt
